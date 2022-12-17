@@ -5,6 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn
 } from 'typeorm';
+
 import { v4 as uuid } from 'uuid';
 
 import { Statement } from '../../statements/entities/Statement';
