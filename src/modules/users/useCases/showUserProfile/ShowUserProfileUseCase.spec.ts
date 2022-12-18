@@ -1,9 +1,26 @@
-import { InMemoryUsersRepository } from '@modules/users/repositories/in-memory/InMemoryUsersRepository';
-import { AppError } from '@shared/errors/AppError';
-import { AuthenticateUserUseCase } from '../authenticateUser/AuthenticateUserUseCase';
-import { CreateUserUseCase } from '../createUser/CreateUserUseCase';
-import { ICreateUserDTO } from '../createUser/ICreateUserDTO';
-import { ShowUserProfileUseCase } from './ShowUserProfileUseCase';
+import {
+  InMemoryUsersRepository,
+} from '@modules/users/repositories/in-memory/InMemoryUsersRepository';
+
+import {
+  AppError,
+} from '@shared/errors/AppError';
+
+import {
+  AuthenticateUserUseCase,
+} from '../authenticateUser/AuthenticateUserUseCase';
+
+import {
+  CreateUserUseCase,
+} from '../createUser/CreateUserUseCase';
+
+import {
+  ICreateUserDTO,
+} from '../createUser/ICreateUserDTO';
+
+import {
+  ShowUserProfileUseCase,
+} from './ShowUserProfileUseCase';
 
 
 let inMemoryUsersRepository: InMemoryUsersRepository;
