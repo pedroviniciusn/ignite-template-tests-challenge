@@ -46,7 +46,7 @@ enum OperationType {
   WITHDRAW = 'withdraw',
 }
 
-describe("Get all operations", () => {
+describe("Get all statements", () => {
   beforeEach(() => {
     inMemoryUsersRepository = new InMemoryUsersRepository();
     createUserUseCase = new CreateUserUseCase(inMemoryUsersRepository);
