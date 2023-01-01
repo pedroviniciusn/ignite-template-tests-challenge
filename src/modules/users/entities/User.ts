@@ -29,7 +29,8 @@ export class User {
   @OneToMany(() => Statement, statement => statement.user)
   statement: Statement[];
 
-  @OneToMany(() => Transfers, transfer => transfer.user)
+  @OneToMany(() => Transfers, transfer => transfer.user_receive)
+  @OneToMany(() => Transfers, transfer => transfer.user_send)
   transfers: Transfers[];
 
   @CreateDateColumn()

@@ -23,13 +23,17 @@ export class Transfers {
 
   @Column('uuid')
   user_id: string;
-
+  
+  @ManyToOne(() => User, user => user.transfers)
+  @JoinColumn({ name: 'user_id', })
+  user_receive: User;
+  
   @Column('uuid')
   send_id: string;
 
   @ManyToOne(() => User, user => user.transfers)
-  @JoinColumn({ name: 'user_id', })
-  user: User;
+  @JoinColumn({ name: 'send_id', })
+  user_send: User;
 
   @Column()
   description: string;
