@@ -8,6 +8,8 @@ import {
 
 import { v4 as uuid } from 'uuid';
 
+import { Transfers } from '../../transfers/entities/Transfers';
+
 import { Statement } from '../../statements/entities/Statement';
 
 @Entity('users')
@@ -26,6 +28,9 @@ export class User {
 
   @OneToMany(() => Statement, statement => statement.user)
   statement: Statement[];
+
+  @OneToMany(() => Transfers, transfer => transfer.user)
+  transfers: Transfers[];
 
   @CreateDateColumn()
   created_at: Date;
