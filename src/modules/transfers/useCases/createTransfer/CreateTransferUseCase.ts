@@ -3,6 +3,7 @@ import { Transfers } from '../../entities/Transfers';
 import { ITransfersRepository } from '../../repositories/ITransfersRepository';
 import { IUsersRepository } from '../../../users/repositories/IUsersRepository';
 import { AppError } from '../../../../shared/errors/AppError';
+import { IStatementsRepository } from '../../../statements/repositories/IStatementsRepository';
 
 interface IRequest {
   user_id: string;
@@ -20,6 +21,9 @@ export class CreateTransferUseCase {
 
     @inject('TransfersRepository')
     private transfersRepository: ITransfersRepository,
+    
+    @inject('StatementsRepository')
+    private statementsRepository: IStatementsRepository
   ) {}
   
   async execute({
@@ -29,10 +33,18 @@ export class CreateTransferUseCase {
     description,
     type,
   }: IRequest): Promise<Transfers> {
-    const user = await this.usersRepository.findById(user_id);
+    const user = await this.usersRepository.findById(send_id);
 
-    if (!user) {
+    const user_receive = await this.usersRepository.findById(user_id);
+
+    if (!user_receive) {
       throw new AppError('User does not exists!');
+    }
+
+    const { balance } = await this.statementsRepository.getUserBalance({ user_id: user.id });
+
+    if (balance < amount) {
+      throw new AppError('Insufficient funds')
     }
 
     const transfer = await this.transfersRepository.create({

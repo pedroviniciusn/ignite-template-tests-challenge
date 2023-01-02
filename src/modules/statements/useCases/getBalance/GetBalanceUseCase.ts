@@ -1,3 +1,4 @@
+import { Transfers } from '../../../transfers/entities/Transfers';
 import { inject, injectable } from "tsyringe";
 
 import { IUsersRepository } from "../../../users/repositories/IUsersRepository";
@@ -11,6 +12,7 @@ interface IRequest {
 
 interface IResponse {
   statement: Statement[];
+  transfer: Transfers[];
   balance: number;
 }
 
@@ -33,7 +35,8 @@ export class GetBalanceUseCase {
 
     const balance = await this.statementsRepository.getUserBalance({
       user_id,
-      with_statement: true
+      with_statement: true,
+      with_transfer: true
     });
 
     return balance as IResponse;

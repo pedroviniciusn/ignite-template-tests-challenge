@@ -3,8 +3,7 @@ import { container } from 'tsyringe';
 import { CreateTransferUseCase } from './CreateTransferUseCase';
 
 enum OperationType {
-  RECEIVED = 'received',
-  SENT = 'sent',
+  TRANSFERS = 'transfers'
 }
 
 export class CreateTransferController {
@@ -21,16 +20,14 @@ export class CreateTransferController {
     const splittedPath = req.originalUrl.split('/')
     const type = splittedPath[splittedPath.length - 2] as OperationType;
 
-    console.log(typeof(type))
-
     const createTransferUseCase = container.resolve(CreateTransferUseCase);
 
     const transfer = await createTransferUseCase.execute({
       user_id,
       send_id,
-      type,
       amount,
       description,
+      type,
     });
 
     return res.json(transfer);

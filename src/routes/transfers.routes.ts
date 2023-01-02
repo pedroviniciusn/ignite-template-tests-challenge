@@ -9,7 +9,7 @@ const createTransferController = new CreateTransferController();
 transfersRouter.use(ensureAuthenticated);
 
 transfersRouter.post(
-  '/sent/:user_id',
+  '/:user_id',
   createTransferController.handle,
 )
 

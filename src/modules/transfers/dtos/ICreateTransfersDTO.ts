@@ -1,11 +1,9 @@
 import { Transfers } from "../entities/Transfers";
 
-export type ICreateTransfersDTO =
-Pick<
-  Transfers,
-  'user_id' |
-  'send_id' |
-  'description' |
-  'amount' |
-  'type'
->
+export interface ICreateTransfersDTO {
+  send_id: string;
+  user_id: string;
+  amount: number;
+  description: string;
+  type: string;
+}

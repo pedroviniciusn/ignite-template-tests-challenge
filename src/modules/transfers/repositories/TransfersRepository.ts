@@ -15,6 +15,10 @@ import {
   ITransfersRepository,
 } from './ITransfersRepository';
 
+enum OperationType {
+  TRANSFERS = 'transfers'
+}
+
 export class TransfersRepository implements ITransfersRepository {
   private repository: Repository<Transfers>;
 
@@ -32,9 +36,9 @@ export class TransfersRepository implements ITransfersRepository {
     const transfer = this.repository.create({
       user_id,
       description,
-      type,
       send_id,
       amount,
+      type: type as OperationType,
     });
 
     return this.repository.save(transfer);
