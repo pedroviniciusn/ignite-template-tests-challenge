@@ -7,5 +7,6 @@ export interface ITransfersRepository {
     description,
     send_id,
     amount,
+    type,
   }: ICreateTransfersDTO): Promise<Transfers>;
 }

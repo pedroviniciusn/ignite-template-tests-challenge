@@ -25,14 +25,16 @@ export class TransfersRepository implements ITransfersRepository {
   async create({
     user_id,
     description,
+    type,
     send_id,
     amount,
   }: ICreateTransfersDTO): Promise<Transfers> {
     const transfer = this.repository.create({
       user_id,
+      description,
+      type,
       send_id,
       amount,
-      description,
     });
 
     return this.repository.save(transfer);
