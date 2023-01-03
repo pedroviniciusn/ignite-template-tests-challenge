@@ -1,9 +1,9 @@
 import { Transfers } from '../../../transfers/entities/Transfers';
 import { inject, injectable } from "tsyringe";
 
-import { IUsersRepository } from "../../../users/repositories/IUsersRepository";
-import { Statement } from "../../entities/Statement";
-import { IStatementsRepository } from "../../repositories/IStatementsRepository";
+import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { Statement } from "../../../statements/entities/Statement";
+import { IStatementsRepository } from "../../../statements/repositories/IStatementsRepository";
 import { GetBalanceError } from "./GetBalanceError";
 
 interface IRequest {
@@ -33,7 +33,7 @@ export class GetBalanceUseCase {
       throw new GetBalanceError();
     }
 
-    const balance = await this.statementsRepository.getUserBalance({
+    const balance = await this.usersRepository.getUserBalance({
       user_id,
       with_statement: true,
       with_transfer: true

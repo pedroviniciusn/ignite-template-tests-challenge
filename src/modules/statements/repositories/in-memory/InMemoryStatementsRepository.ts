@@ -1,6 +1,6 @@
 import { Statement } from "../../entities/Statement";
 import { ICreateStatementDTO } from "../../useCases/createStatement/ICreateStatementDTO";
-import { IGetBalanceDTO } from "../../useCases/getBalance/IGetBalanceDTO";
+import { IGetBalanceDTO } from "../../../users/useCases/getBalance/IGetBalanceDTO";
 import { IGetStatementOperationDTO } from "../../useCases/getStatementOperation/IGetStatementOperationDTO";
 import { IStatementsRepository } from "../IStatementsRepository";
 

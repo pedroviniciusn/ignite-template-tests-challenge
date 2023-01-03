@@ -2,9 +2,7 @@ import {
   InMemoryStatementsRepository,
 } from '@modules/statements/repositories/in-memory/InMemoryStatementsRepository';
 
-import { 
-  InMemoryUsersRepository,
-} from '@modules/users/repositories/in-memory/InMemoryUsersRepository';
+import InMemoryUsersRepository from '@modules/users/repositories/in-memory/InMemoryUsersRepository';
 
 import { 
   AuthenticateUserUseCase,
@@ -24,11 +22,11 @@ import {
 
 import { 
   CreateStatementUseCase,
-} from '../createStatement/CreateStatementUseCase';
+} from '../../../statements/useCases/createStatement/CreateStatementUseCase';
 
 import { 
   ICreateStatementDTO,
-} from '../createStatement/ICreateStatementDTO';
+} from '../../../statements/useCases/createStatement/ICreateStatementDTO';
 
 import { 
   GetBalanceUseCase,
@@ -52,8 +50,8 @@ describe("Get all statements", () => {
     createUserUseCase = new CreateUserUseCase(inMemoryUsersRepository);
     inMemoryStatementsRepository = new InMemoryStatementsRepository();
     createStatementUseCase = new CreateStatementUseCase(
-      inMemoryUsersRepository,
       inMemoryStatementsRepository,
+      inMemoryUsersRepository,
     );
     getBalanceUseCase = new GetBalanceUseCase(
       inMemoryStatementsRepository,

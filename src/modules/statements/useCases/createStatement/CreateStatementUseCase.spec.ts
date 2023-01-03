@@ -2,9 +2,7 @@ import {
   InMemoryStatementsRepository,
 } from '@modules/statements/repositories/in-memory/InMemoryStatementsRepository';
 
-import { 
-  InMemoryUsersRepository,
-} from '@modules/users/repositories/in-memory/InMemoryUsersRepository';
+import InMemoryUsersRepository from '@modules/users/repositories/in-memory/InMemoryUsersRepository';
 
 import { 
   AuthenticateUserUseCase,

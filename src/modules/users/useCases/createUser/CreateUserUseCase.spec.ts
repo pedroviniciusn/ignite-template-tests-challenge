@@ -2,9 +2,7 @@ import {
   AppError,
 } from '@shared/errors/AppError';
 
-import {
-  InMemoryUsersRepository,
-} from '../../repositories/in-memory/InMemoryUsersRepository';
+import InMemoryUsersRepository from '../../repositories/in-memory/InMemoryUsersRepository';
 
 import {
   CreateUserUseCase,
